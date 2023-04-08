@@ -1,0 +1,20 @@
+.links a.active{
+  color: #2047f8 !important;
+  position: relative;
+}
+.links a.active::after{
+  content: '';
+  width: 100%;
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  height: 3px;
+  background-color:  #2047f8 !important;
+
+}
+@media screen and (max-width: 800px) {
+.links a.active::after{
+  width: 30%;
+  top: 1.8rem;
+}
+}

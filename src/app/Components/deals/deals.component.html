@@ -1,0 +1,156 @@
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="">
+      <a class="text-decoration-none px-3 text-dark fw-bold shadow-lg rounded py-2">Deals</a>
+      <a class="text-decoration-none px-3 text-secondary">Activities</a>
+      <a class="text-decoration-none px-3 text-secondary">Statistics</a>
+    </div>
+  </div>
+</div>
+
+<app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+
+<div class="container p-0">
+  <div class="row m-0" cdkDropListGroup>
+
+    <!-- column one | Potential Value -->
+    <div class="col-sm bg-light p-2 m-md-2 rounded" cdkDropList [cdkDropListData]="potenialValue"
+      (cdkDropListDropped)="drop($event)">
+      <div class="mb-3">
+        <h5>Potential Value</h5>
+        <span><i class="bi bi-clipboard-fill text-secondary me-1"></i>6</span>
+        <span><i class="bi bi-h-square-fill text-secondary ms-3 me-1"></i>425.2k</span>
+        <span><i class="bi bi-bell-fill text-secondary ms-3 me-1"></i>2</span>
+      </div>
+
+      <div class="card shadow" *ngFor="let deals of potenialValue" cdkDrag>
+        <div
+          *ngIf="searchText === '' || deals.first_name.toLowerCase().includes(searchText) || deals.last_name.toLowerCase().includes(searchText) || deals.email.toLowerCase().includes(searchText)">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h6 class="card-title">{{deals.company}}</h6>
+              <i class="bi bi-three-dots text-secondary"></i>
+            </div>
+            <span class="badge text-bg-secondary p-2 text-uppercase">{{deals.state}}</span>
+            <span class="badge text-bg-primary p-2 m-2">{{deals.probability_status}}</span>
+            <p class="text-secondary"><i class="bi bi-telephone"></i> {{deals.first_name}} {{deals.last_name}}</p>
+            <p class="text-secondary">{{deals.phone}}</p>
+            <p class="text-secondary"><i class="bi bi-calendar me-2"></i>{{deals.date | date}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- column two  | Focus -->
+    <div class="col-sm bg-light p-2 m-md-2 rounded" cdkDropList [cdkDropListData]="focus"
+      (cdkDropListDropped)="drop($event)">
+      <div class="mb-3">
+        <h5>Focus</h5>
+        <span><i class="bi bi-clipboard-fill text-secondary me-1"></i>29</span>
+        <span><i class="bi bi-h-square-fill text-secondary ms-3 me-1"></i>2.36 min</span>
+        <span><i class="bi bi-bell-fill text-secondary ms-3 me-1"></i>2</span>
+      </div>
+
+      <div class="card shadow" *ngFor="let deals of focus" cdkDrag>
+        <div
+          *ngIf="searchText === '' || deals.first_name.toLowerCase().includes(searchText) || deals.last_name.toLowerCase().includes(searchText) || deals.email.toLowerCase().includes(searchText)">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h6 class="card-title">{{deals.company}}</h6>
+              <i class="bi bi-three-dots text-secondary"></i>
+            </div>
+            <span class="badge text-bg-secondary p-2 text-uppercase">{{deals.state}}</span>
+            <span class="badge text-bg-primary p-2 m-2">{{deals.probability_status}}</span>
+            <p class="text-secondary"><i class="bi bi-telephone"></i> {{deals.first_name}} {{deals.last_name}}</p>
+            <p class="text-secondary">{{deals.phone}}</p>
+            <p class="text-secondary"><i class="bi bi-calendar me-2"></i>{{deals.date | date}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- column three | Contact Made -->
+    <div class="col-sm bg-light p-2 m-md-2 rounded" cdkDropList [cdkDropListData]="contactMade"
+      (cdkDropListDropped)="drop($event)">
+      <div class="mb-3">
+        <h5>Contact Made</h5>
+        <span><i class="bi bi-clipboard-fill text-secondary me-1"></i>4</span>
+        <span><i class="bi bi-h-square-fill text-secondary ms-3 me-1"></i>5.42k</span>
+        <span><i class="bi bi-bell-fill text-secondary ms-3 me-1"></i>0</span>
+      </div>
+
+      <div class="card shadow" *ngFor="let deals of contactMade" cdkDrag>
+        <div
+          *ngIf="searchText === '' || deals.first_name.toLowerCase().includes(searchText) || deals.last_name.toLowerCase().includes(searchText) || deals.email.toLowerCase().includes(searchText)">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h6 class="card-title">{{deals.company}}</h6>
+              <i class="bi bi-three-dots text-secondary"></i>
+            </div>
+            <span class="badge text-bg-secondary p-2 text-uppercase">{{deals.state}}</span>
+            <span class="badge text-bg-primary p-2 m-2">{{deals.probability_status}}</span>
+            <p class="text-secondary"><i class="bi bi-telephone"></i> {{deals.first_name}} {{deals.last_name}}</p>
+            <p class="text-secondary">{{deals.phone}}</p>
+            <p class="text-secondary"><i class="bi bi-calendar me-2"></i>{{deals.date | date}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- column four | Offer Sent -->
+    <div class="col-sm bg-light p-2 m-md-2 rounded" cdkDropList [cdkDropListData]="offerSent"
+      (cdkDropListDropped)="drop($event)">
+      <div class="mb-3">
+        <h5>Offer Sent</h5>
+        <span><i class="bi bi-clipboard-fill text-secondary me-1"></i>3</span>
+        <span><i class="bi bi-h-square-fill text-secondary ms-3 me-1"></i>5.57k</span>
+        <span><i class="bi bi-bell-fill text-secondary ms-3 me-1"></i>0</span>
+      </div>
+
+      <div class="card shadow" *ngFor="let deals of offerSent" cdkDrag>
+        <div
+          *ngIf="searchText === '' || deals.first_name.toLowerCase().includes(searchText) || deals.last_name.toLowerCase().includes(searchText) || deals.email.toLowerCase().includes(searchText)">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h6 class="card-title">{{deals.company}}</h6>
+              <i class="bi bi-three-dots text-secondary"></i>
+            </div>
+            <span class="badge text-bg-secondary p-2 text-uppercase">{{deals.state}}</span>
+            <span class="badge text-bg-primary p-2 m-2">{{deals.probability_status}}</span>
+            <p class="text-secondary"><i class="bi bi-telephone"></i> {{deals.first_name}} {{deals.last_name}}</p>
+            <p class="text-secondary">{{deals.phone}}</p>
+            <p class="text-secondary"><i class="bi bi-calendar me-2"></i>{{deals.date | date}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- column five | Getting Ready -->
+    <div class="col-sm bg-light p-2 m-md-2 rounded" cdkDropList [cdkDropListData]="gettingReady"
+      (cdkDropListDropped)="drop($event)">
+      <div class="mb-3">
+        <h5>Getting Ready</h5>
+        <span><i class="bi bi-clipboard-fill text-secondary me-1"></i>13</span>
+        <span><i class="bi bi-h-square-fill text-secondary ms-3 me-1"></i>1.74 min</span>
+        <span><i class="bi bi-bell-fill text-secondary ms-3 me-1"></i>2</span>
+      </div>
+
+      <div class="card shadow" *ngFor="let deals of gettingReady" cdkDrag>
+        <div
+          *ngIf="searchText === '' || deals.first_name.toLowerCase().includes(searchText) || deals.last_name.toLowerCase().includes(searchText) || deals.email.toLowerCase().includes(searchText)">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h6 class="card-title">{{deals.company}}</h6>
+              <i class="bi bi-three-dots text-secondary"></i>
+            </div>
+            <span class="badge text-bg-secondary p-2 text-uppercase">{{deals.state}}</span>
+            <span class="badge text-bg-primary p-2 m-2">{{deals.probability_status}}</span>
+            <p class="text-secondary"><i class="bi bi-telephone"></i> {{deals.first_name}} {{deals.last_name}}</p>
+            <p class="text-secondary">{{deals.phone}}</p>
+            <p class="text-secondary"><i class="bi bi-calendar me-2"></i>{{deals.date | date}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
